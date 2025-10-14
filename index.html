@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sisi Party Agency</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins',sans-serif; background:#fff0f5; color:#333; line-height:1.6; scroll-behavior:smooth; overflow-x:hidden; }
+canvas#confettiCanvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+
+header { position:relative; z-index:1; width:100%; background:linear-gradient(135deg,#ff5f6d,#ffc371); text-align:center; padding:120px 20px; overflow:hidden; }
+header::before { content:""; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%); animation:pulse 6s infinite ease-in-out; z-index:0; }
+@keyframes pulse {0%,100% { transform: scale(1); opacity:1;} 50% {transform:scale(1.2); opacity:0.8;}}
+header h1 { font-size:4em; color:#fff; text-shadow:2px 2px 10px rgba(0,0,0,0.3); animation:fadeInDown 1.5s ease forwards;}
+header p { font-size:1.5em; margin-top:15px; color:#fff; opacity:0; animation:fadeInUp 2s ease forwards 0.5s;}
+@keyframes fadeInDown { from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+
+.reserve-btn { display:inline-block; background:#ff1e56; color:white; padding:20px 50px; font-size:1.3em; border-radius:40px; margin-top:40px; text-decoration:none; transition:0.3s; box-shadow:0 6px 12px rgba(0,0,0,0.3); animation:bounceIn 2s; z-index:1; position:relative;}
+.reserve-btn:hover { background:#e60040; transform:scale(1.05);}
+@keyframes bounceIn {0% {transform:scale(0);} 60% {transform:scale(1.2);} 100% {transform:scale(1);}}
+
+section { padding:80px 20px; text-align:center; position:relative; z-index:1; opacity:0; transform:translateY(30px); transition: all 1s ease;}
+.promo { background:#ffe4ec; border-top:5px dashed #ff1e56; padding:60px 20px; }
+.promo h2 { font-size:2.8em; color:#e60073; font-weight:bold; text-transform:uppercase; letter-spacing:2px; }
+.promo p { font-size:1.5em; font-weight:600; color:#c7005f; margin-top:10px;}
+
+.description h2 { font-size:2.5em; color:#ff1e56; margin-bottom:20px; text-shadow:1px 1px 5px rgba(0,0,0,0.2);}
+.description-phone h2 { font-size:2.5em; color:#ff1e56; margin-bottom:20px; text-shadow:1px 1px 5px rgba(0,0,0,0.2);}
+.description p { font-size:1.2em; color:#444; max-width:900px; margin:auto; line-height:1.8; }
+.description-phone { font-size:1.2em; color:#444; max-width:900px; margin:auto; line-height:1.8; }
+
+form { max-width:600px; margin:auto; background:#fff0f5; padding:40px; border-radius:20px; box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+form input, form select, form textarea { width:100%; padding:15px; margin-bottom:20px; border-radius:10px; border:2px solid #ff1e56; font-size:1em; transition:0.3s;}
+form input:focus, form select:focus, form textarea:focus { border-color:#e60040; outline:none;}
+form button { background:#ff1e56; color:#fff; padding:15px 40px; font-size:1.2em; border:none; border-radius:30px; cursor:pointer; transition:0.3s;}
+form button:hover { background:#e60040; transform:scale(1.05);}
+
+footer { background:#ff5f6d; color:#fff; padding:50px 20px; font-weight:500; position:relative; z-index:1; text-align:center;}
+
+@media (max-width:768px){ header h1 {font-size:2.5em;} header p{font-size:1.2em;} .promo h2{font-size:2em;} .promo p{font-size:1.2em;} }
+</style>
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+
+<header>
+<h1>Sisi Party Agency</h1>
+<p>Създаваме незабравими партита и събития!</p>
+<a href="#contact" class="reserve-btn">🎉 Резервирайте сега</a>
+</header>
+
+<section class="promo">
+<h2>🎓 Промоция за абитуриентски балове!</h2>
+<p>Резервирайте вашата декорация за бала до края на годината и получете специална отстъпка!</p>
+</section>
+
+<section class="description">
+<h2>Защо да изберете нас?</h2>
+<p>В Sisi Party Agency вярваме, че всяко събитие заслужава внимание и вдъхновение. Организираме сватби, кръщенета, абитуриентски балове, бебешки погачи, рождени дни и фирмени събития с много страст, цветове и креативност. Нашият партньор изработва покани, подаръци за гости и табелки с имена, за да направим всяко събитие уникално. Стремим се да впечатлим и да създадем спомени, които остават завинаги!</p>
+</section>
+
+<section class="description-phone">
+    <h2>Телефон за връзка с нас</h2>
+    <h1>0896 72 73 05</h1>
+</section>
+
+<section id="contact">
+<h2>📩 Свържете се с нас</h2>
+<form action="https://formspree.io/f/mnqrvkln" method="POST">
+<input type="text" name="name" placeholder="Вашето име" required>
+<input type="email" name="email" placeholder="Имейл" required>
+<input type="tel" name="phone" placeholder="Телефон" required>
+<select name="event" required>
+<option value="">Изберете тип събитие</option>
+<option value="wedding">Сватба</option>
+<option value="baptism">Кръщене</option>
+<option value="ball">Абитуриентски бал</option>
+<option value="baby">Бебешка погача</option>
+<option value="birthday">Рожден ден</option>
+<option value="corporate">Фирмено събитие</option>
+</select>
+<textarea name="message" rows="5" placeholder="Съобщение" required></textarea>
+<button type="submit">Изпрати</button>
+</form>
+</section>
+
+<footer>
+<p>Нашият партньор изработва уникални покани, подаръци за гости, табелки и други детайли, които придават специален чар на всяко събитие.</p>
+<p>© 2025 Sisi Party Agency — Всички права запазени</p>
+</footer>
+
+<script>
+// Конфети и балони - canvas
+const canvas = document.getElementById('confettiCanvas');
+const ctx = canvas.getContext('2d');
+let W = canvas.width = window.innerWidth;
+let H = canvas.height = window.innerHeight;
+window.addEventListener('resize', () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
+
+const colors = ['#FFC0CB','#FFDAB9','#E6E6FA','#98FB98','#FFFACD'];
+const confettiCount = 80;
+const confetti = [];
+
+for(let i=0;i<confettiCount;i++){
+confetti.push({
+x: Math.random()*W,
+y: Math.random()*H,
+r: Math.random()*6+4,
+d: Math.random()*confettiCount,
+color: colors[Math.floor(Math.random()*colors.length)],
+tilt: Math.floor(Math.random()*10)-10,
+tiltAngleIncrement: Math.random()*0.07+0.05,
+tiltAngle:0
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,W,H);
+confetti.forEach(c=>{
+ctx.beginPath();
+ctx.lineWidth = c.r/2;
+ctx.strokeStyle = c.color;
+ctx.moveTo(c.x+c.tilt+c.r/4, c.y);
+ctx.lineTo(c.x+c.tilt, c.y+c.tilt+c.r/4);
+ctx.stroke();
+});
+update();
+}
+
+function update(){
+confetti.forEach(c=>{
+c.tiltAngle += c.tiltAngleIncrement;
+c.y += (Math.cos(c.d)+3+c.r/2)/2;
+c.x += Math.sin(c.d);
+c.tilt = Math.sin(c.tiltAngle)*15;
+if(c.y>H){ c.y=-10; c.x=Math.random()*W; }
+if(c.x>W){ c.x=0; }
+if(c.x<0){ c.x=W; }
+});
+}
+
+function animate(){
+requestAnimationFrame(animate);
+draw();
+}
+animate();
+
+// Анимации при скрол
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+sections.forEach(sec=>{
+const top = sec.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){ sec.style.opacity='1'; sec.style.transform='translateY(0)'; }
+});
+});
+</script>
+
+</body>
+</html>
