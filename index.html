@@ -2,44 +2,127 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="Sisi Party Agency предлага уникални декорации за сватби, кръщенета, рожденни дни и абитуриентски балове. Създаваме незабравими партита с внимание към всеки детайл.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sisi Party Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Sisi Party Agency | Парти декоратор</title>
 <style>
+/* --- Основни стилове --- */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Poppins',sans-serif; background:#fff0f5; color:#333; line-height:1.6; scroll-behavior:smooth; overflow-x:hidden; }
-canvas#confettiCanvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+body { font-family: 'Poppins', Arial, sans-serif; font-size: clamp(14px, 2vw, 18px); line-height:1.6; background:#fff0f5; color:#333; scroll-behavior:smooth; overflow-x:hidden; }
 
-header { position:relative; z-index:1; width:100%; background:linear-gradient(135deg,#ff5f6d,#ffc371); text-align:center; padding:120px 20px; overflow:hidden; }
-header::before { content:""; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%); animation:pulse 6s infinite ease-in-out; z-index:0; }
-@keyframes pulse {0%,100% { transform: scale(1); opacity:1;} 50% {transform:scale(1.2); opacity:0.8;}}
-header h1 { font-size:4em; color:#fff; text-shadow:2px 2px 10px rgba(0,0,0,0.3); animation:fadeInDown 1.5s ease forwards;}
-header p { font-size:1.5em; margin-top:15px; color:#fff; opacity:0; animation:fadeInUp 2s ease forwards 0.5s;}
+h1 { font-size: clamp(2rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.8rem); }
+h3 { font-size: clamp(1.2rem, 3vw, 2em); }
+
+header {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  padding: 120px 20px;
+  overflow: hidden;
+  background-image: linear-gradient(rgba(255,95,109,0.6), rgba(255,195,113,0.6)), url('/images/header-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+header::before {
+  content:"";
+  position:absolute;
+  top:-50%; left:-50%;
+  width:200%; height:200%;
+  background:radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%);
+  animation:pulse 6s infinite ease-in-out;
+  z-index:0;
+}
+@keyframes pulse {0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.2);opacity:0.8;}}
+
+header h1 { font-size:4em; color:#fff; text-shadow:2px 2px 10px rgba(0,0,0,0.3); animation:fadeInDown 1.5s ease forwards; }
+header p { font-size:1.5em; margin-top:15px; color:#fff; opacity:0; animation:fadeInUp 2s ease forwards 0.5s; }
+
 @keyframes fadeInDown { from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
 @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
 
-.reserve-btn { display:inline-block; background:#ff1e56; color:white; padding:20px 50px; font-size:1.3em; border-radius:40px; margin-top:40px; text-decoration:none; transition:0.3s; box-shadow:0 6px 12px rgba(0,0,0,0.3); animation:bounceIn 2s; z-index:1; position:relative;}
-.reserve-btn:hover { background:#e60040; transform:scale(1.05);}
-@keyframes bounceIn {0% {transform:scale(0);} 60% {transform:scale(1.2);} 100% {transform:scale(1);}}
+.reserve-btn {
+  display:inline-block; background:#ff1e56; color:white; padding:20px 50px; font-size:1.3em; border-radius:40px;
+  margin-top:40px; text-decoration:none; transition:0.3s; box-shadow:0 6px 12px rgba(0,0,0,0.3); animation:bounceIn 2s; z-index:1; position:relative;
+}
+.reserve-btn:hover { background:#e60040; transform:scale(1.05); }
+@keyframes bounceIn {0%{transform:scale(0);}60%{transform:scale(1.2);}100%{transform:scale(1);}}
 
-section { padding:80px 20px; text-align:center; position:relative; z-index:1; opacity:0; transform:translateY(30px); transition: all 1s ease;}
+section { padding:80px 20px; text-align:center; position:relative; z-index:1; opacity:0; transform:translateY(30px); transition: all 1s ease; }
+
+/* --- Промо секции --- */
 .promo { background:#ffe4ec; border-top:5px dashed #ff1e56; padding:60px 20px; }
 .promo h2 { font-size:2.8em; color:#e60073; font-weight:bold; text-transform:uppercase; letter-spacing:2px; }
-.promo p { font-size:1.5em; font-weight:600; color:#c7005f; margin-top:10px;}
+.promo p { font-size:1.5em; font-weight:600; color:#c7005f; margin-top:10px; }
 
-.description h2 { font-size:2.5em; color:#ff1e56; margin-bottom:20px; text-shadow:1px 1px 5px rgba(0,0,0,0.2);}
-.description-phone h2 { font-size:2.5em; color:#ff1e56; margin-bottom:20px; text-shadow:1px 1px 5px rgba(0,0,0,0.2);}
-.description p { font-size:1.2em; color:#444; max-width:900px; margin:auto; line-height:1.8; }
-.description-phone { font-size:1.2em; color:#444; max-width:900px; margin:auto; line-height:1.8; }
+/* --- Описание --- */
+.description h2, .description-phone h2 { font-size:2.5em; color:#ff1e56; margin-bottom:20px; text-shadow:1px 1px 5px rgba(0,0,0,0.2);}
+.description p, .description-phone { font-size:1.2em; color:#444; max-width:900px; margin:auto; line-height:1.8; }
 
+/* --- Формуляр --- */
 form { max-width:600px; margin:auto; background:#fff0f5; padding:40px; border-radius:20px; box-shadow:0 10px 20px rgba(0,0,0,0.2);}
 form input, form select, form textarea { width:100%; padding:15px; margin-bottom:20px; border-radius:10px; border:2px solid #ff1e56; font-size:1em; transition:0.3s;}
 form input:focus, form select:focus, form textarea:focus { border-color:#e60040; outline:none;}
 form button { background:#ff1e56; color:#fff; padding:15px 40px; font-size:1.2em; border:none; border-radius:30px; cursor:pointer; transition:0.3s;}
-form button:hover { background:#e60040; transform:scale(1.05);}
+form button:hover { background:#e60040; transform:scale(1.05); }
 
-footer { background:#ff5f6d; color:#fff; padding:50px 20px; font-weight:500; position:relative; z-index:1; text-align:center;}
+/* --- Footer --- */
+footer { background:#ff5f6d; color:#fff; padding:50px 20px; font-weight:500; position:relative; z-index:1; text-align:center; }
 
-@media (max-width:768px){ header h1 {font-size:2.5em;} header p{font-size:1.2em;} .promo h2{font-size:2em;} .promo p{font-size:1.2em;} }
+/* --- Партньорски карти --- */
+.partner-section { background: #fff5f9 url('https://www.toptal.com/designers/subtlepatterns/uploads/flowers.png'); background-size: 400px; padding: 90px 30px; text-align:center; }
+.partner-section h2 { font-size:2.8em; color:#e60073; font-family:'Great Vibes', cursive; margin-bottom:40px; text-shadow:1px 1px 5px rgba(0,0,0,0.1);}
+.partner-intro { font-size:1.3em; color:#555; max-width:900px; margin:auto; margin-bottom:50px; line-height:1.8;}
+
+.partner-cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:30px; justify-content:center; align-items:stretch; max-width:1100px; margin:0 auto; }
+
+.partner-card {
+  background: rgba(255,255,255,0.9); border-radius:20px; padding:35px 25px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1); transition:transform 0.3s ease, box-shadow 0.3s ease; border:2px solid #ffd6e8;
+  opacity:0; transform:translateY(30px);
+}
+.partner-card:hover { transform: translateY(-6px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+.partner-card h3 { font-family:'Great Vibes', cursive; font-size:2em; color:#ff1e56; margin-bottom:15px; }
+.partner-card p { font-size:1.1em; color:#444; line-height:1.6; font-family:'Poppins', sans-serif; }
+
+.partner-section p.final { margin-top:50px; font-size:1.2em; color:#555; font-style:italic; max-width:900px; margin-left:auto; margin-right:auto; }
+
+/* --- Декорации --- */
+.decorations-section { padding:80px 20px; text-align:center; background:#fff0f5; }
+.decorations-section h2 { font-size:2.8em; color:#ff1e56; margin-bottom:50px; text-shadow:1px 1px 5px rgba(0,0,0,0.1);}
+.decor-slider { position:relative; max-width:900px; margin:0 auto; overflow:hidden; }
+.slider-wrapper { overflow:hidden; }
+.slider-track { display:flex; transition: transform 0.5s ease; }
+.decor-item { min-width:100%; border-radius:20px; overflow:hidden; }
+.decor-item img { width:100%; height:80vh; object-fit:contain; display:block; margin:0 auto; }
+.decor-slider button { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,30,86,0.7); color:#fff; border:none; font-size:2em; padding:10px 20px; cursor:pointer; border-radius:50%; z-index:2; transition:0.3s; }
+.decor-slider button:hover { background:rgba(255,30,86,0.9);}
+.decor-slider .prev { left:10px; } .decor-slider .next { right:10px; }
+
+/* --- Media queries --- */
+@media (max-width: 768px) {
+  header h1 { font-size:2.5em; } header p{ font-size:1.2em; }
+  .promo h2{ font-size:2em; } .promo p{ font-size:1.2em; }
+  .decor-item img { height:300px; }
+  .partner-cards { grid-template-columns:1fr !important; gap:20px; }
+  .partner-card { width:100%; max-width:100%; margin:0 auto; }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size:2rem; } header p{ font-size:1em; }
+  .promo h2{ font-size:1.5em; } .promo p{ font-size:0.9em; }
+  body { font-size:14px; }
+  .partner-cards { grid-template-columns:1fr !important; gap:15px; }
+  .partner-card { width:100%; max-width:100%; margin:0 auto; }
+}
+
+/* --- Canvas конфети --- */
+canvas#confettiCanvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+
 </style>
 </head>
 <body>
@@ -59,7 +142,7 @@ footer { background:#ff5f6d; color:#fff; padding:50px 20px; font-weight:500; pos
 
 <section class="description">
 <h2>Защо да изберете нас?</h2>
-<p>В Sisi Party Agency вярваме, че всяко събитие заслужава внимание и вдъхновение. Организираме сватби, кръщенета, абитуриентски балове, бебешки погачи, рождени дни и фирмени събития с много страст, цветове и креативност. Нашият партньор изработва покани, подаръци за гости и табелки с имена, за да направим всяко събитие уникално. Стремим се да впечатлим и да създадем спомени, които остават завинаги!</p>
+<p>В Sisi Party Agency вярваме, че всяко събитие заслужава внимание и вдъхновение. Организираме сватби, кръщенета, абитуриентски балове, бебешки погачи, рождени дни и фирмени събития с много страст, цветове и креативност. Нашият партньор изработва покани, подаръци за гости ,табелки с имена и много други , за да направим всяко събитие уникално. Стремим се да впечатлим и да създадем спомени, които остават завинаги!</p>
 </section>
 
 <section class="description-phone">
@@ -67,9 +150,100 @@ footer { background:#ff5f6d; color:#fff; padding:50px 20px; font-weight:500; pos
     <h1>0896 72 73 05</h1>
 </section>
 
+<section class="decorations-section">
+    <h2>🎨 Някои от нашите декорации</h2>
+    <div class="decor-slider">
+      <button class="prev">&#10094;</button>
+      <div class="slider-wrapper">
+        <div class="slider-track">
+          <div class="decor-item"><img src="/images/decorations/decor5.jpg" alt="Декорация 1"></div>
+          <div class="decor-item"><img src="/images/decorations/decor2.jpg" alt="Декорация 2"></div>
+          <div class="decor-item"><img src="/images/decorations/decor6.jpg" alt="Декорация 3"></div>
+          <div class="decor-item"><img src="/images/decorations/decor4.jpg" alt="Декорация 4"></div>
+          <div class="decor-item"><img src="/images/decorations/decor1.jpg" alt="Декорация 5"></div>
+          <div class="decor-item"><img src="/images/decorations/decor3.jpg" alt="Декорация 6"></div>
+          <div class="decor-item"><img src="/images/decorations/decor7.jpg" alt="Декорация 7"></div>
+          <div class="decor-item"><img src="/images/decorations/decor8.jpg" alt="Декорация 8"></div>
+        </div>
+      </div>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+  
+  
+
+<section class="partner-section">
+    <h2>🤝 Партньорство с "Ръчно Изработени Подаръци S&D"</h2>
+    <p class="partner-intro">
+      Нашият доверен партньор <strong>„Ръчно Изработени Подаръци S&D“</strong> се грижи за всеки детайл от вашето събитие — от поканите до последната украса. Всички изделия са създадени с любов, вкус и внимание към най-малките подробности.
+    </p>
+  
+    <div class="partner-cards">
+      <div class="partner-card">
+        <h3>🎀 Кръщене</h3>
+        <p>Покани, подаръчета за гости, свещи, хавлии, бурканчета с мед, табелки с имена, кърпички, украса за маса и специални аксесоари за малкото ангелче.</p>
+      </div>
+  
+      <div class="partner-card">
+        <h3>💍 Сватба</h3>
+        <p>Покани, кутийки, тейбъл картички, номера за маси, книга за гости, табло, декорации за маси, панделки за чаши и коли, комплекти за младоженци и още.</p>
+      </div>
+
+      <div class="partner-card">
+        <h3>🧑‍🎓 Абитуриентски бал</h3>
+        <p>Покани, подаръчета за гостите, табелки, фотокът, банери, цветни декорации и персонализирани елементи, които правят бала още по-незабравим.</p>
+      </div>
+  
+      <div class="partner-card">
+        <h3>👶 Бебешка погача</h3>
+        <p>Тематични покани, подаръчета за гости, табелки, фотокът, венец с името на бебето, банери, балони и украса в нежни тонове.</p>
+      </div>
+  
+      <div class="partner-card">
+        <h3>🎉 Рожден ден</h3>
+        <p>Декорации, банери, покани, подаръчета за гости, тематични комплекти и фотозона с индивидуален стил и цветове според темата.</p>
+      </div>
+  
+      <div class="partner-card">
+        <h3>💼 Фирмени и други събития</h3>
+        <p>Корпоративни подаръци, табелки с лого, сувенири, картички, декорации за фирмени партита, годежи и юбилеи.</p>
+      </div>
+
+      <div class="partner-card">
+        <h3>👩‍🍼 Посрещане на мама и бебе</h3>
+        <p>
+          Нежна декорация за дома или болницата, банери с името на бебето, подаръчета за гости, тематични балони, фотокът, цветни букети от пелени и сладки изненади за мама и нейното малко чудо.
+        </p>
+      </div>
+      
+      <div class="partner-card">
+        <h3>🎀 Gender Reveal Party</h3>
+        <p>
+          Декорации в розово и синьо, балони с изненада, покани, сладки и торти в тематичен стил, подаръчета за гости, банери и фотозона за вълнуващия момент, когато се разкрива пола на бебето.
+        </p>
+      </div>
+
+      <div class="partner-card">
+        <h3>✨ Специални поръчки</h3>
+        <p>Имате идея, която не сте виждали никъде? „Sisi Party Agency“ и „Ръчно Изработени Подаръци S&D“ ще я превърнат в реалност – по ваш вкус, цвят, тема и настроение. Всичко е възможно!</p>
+      </div>
+      
+    </div>
+  
+    <p class="final">
+      Всички продукти са <strong>ръчно изработени</strong> и персонализирани, за да направят вашето събитие неповторимо и изпълнено с емоция.
+    </p>
+  </section>
+  
+<section class="promo">
+    <h2>🎓 Промоция за абитуриентски балове!</h2>
+    <p>Резервирайте вашата декорация за бала до края на годината и получете специална отстъпка!</p>
+</section>
+  
+
 <section id="contact">
 <h2>📩 Свържете се с нас</h2>
-<form action="https://formspree.io/f/mnqrvkln" method="POST">
+<form action="https://formspree.io/f/xwprallg" method="POST">
 <input type="text" name="name" placeholder="Вашето име" required>
 <input type="email" name="email" placeholder="Имейл" required>
 <input type="tel" name="phone" placeholder="Телефон" required>
@@ -77,10 +251,13 @@ footer { background:#ff5f6d; color:#fff; padding:50px 20px; font-weight:500; pos
 <option value="">Изберете тип събитие</option>
 <option value="wedding">Сватба</option>
 <option value="baptism">Кръщене</option>
+<option value="baby">Посрещане на мама и бебе</option>
 <option value="ball">Абитуриентски бал</option>
 <option value="baby">Бебешка погача</option>
 <option value="birthday">Рожден ден</option>
 <option value="corporate">Фирмено събитие</option>
+<option value="gender">Gender Reveal Party</option>
+<option value="other">Друго</option>
 </select>
 <textarea name="message" rows="5" placeholder="Съобщение" required></textarea>
 <button type="submit">Изпрати</button>
@@ -88,7 +265,6 @@ footer { background:#ff5f6d; color:#fff; padding:50px 20px; font-weight:500; pos
 </section>
 
 <footer>
-<p>Нашият партньор изработва уникални покани, подаръци за гости, табелки и други детайли, които придават специален чар на всяко събитие.</p>
 <p>© 2025 Sisi Party Agency — Всички права запазени</p>
 </footer>
 
@@ -156,6 +332,40 @@ const top = sec.getBoundingClientRect().top;
 if(top < window.innerHeight - 100){ sec.style.opacity='1'; sec.style.transform='translateY(0)'; }
 });
 });
+
+// Анимация на кутийките при скрол
+const partnerCards = document.querySelectorAll('.partner-card');
+window.addEventListener('scroll', () => {
+  partnerCards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+      card.style.transition = 'all 0.8s ease';
+    }
+  });
+});
+
+const track = document.querySelector('.slider-track');
+const slides = Array.from(track.children);
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+let currentIndex = 0;
+
+function updateSlider() {
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateSlider();
+});
+
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  updateSlider();
+});
+
 </script>
 
 </body>
